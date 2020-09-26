@@ -1,0 +1,7 @@
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+    background-attachment: fixed !important;
+    min-height: 100%;
+    height: initial;
+}

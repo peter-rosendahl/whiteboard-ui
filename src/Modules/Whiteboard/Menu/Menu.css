@@ -1,0 +1,14 @@
+
+
+.menu-section {
+    position: absolute !important;
+    left: 10px;
+    top: 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    z-index: 10;
+}
+
+.menu-section button {
+    margin: 0 5px;
+}
