@@ -114,7 +114,7 @@ class Login extends Component {
                                         <Button type='button' className='' onClick={this.onRegisterClick}>Register</Button>
                                         <Button disabled={!(this.state.username.length !== 0 && this.state.password.length !== 0)} type='submit' variant='contained' color='primary' className=''>
                                             {this.state.loading && <CircularProgress size={24} color="white" />}
-                                            Login
+                                            {this.state.loading === false && <React.Fragment>Login</React.Fragment>}
                                         </Button>
                                     </Grid>
                                 {/* </Form.Row> */}

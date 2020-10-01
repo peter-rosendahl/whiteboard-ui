@@ -4,18 +4,21 @@
     position: relative;
 }
 
+.postit-header {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: rgba(255,255,255,0.1);
+    cursor: move;
+}
+
 .postit .closeBtn {
     width: 24px;
     height: 24px;
-    position: absolute;
-    top: -12px;
-    right: -12px;
-    visibility: hidden;
     cursor: pointer;
-}
-
-.postit:hover .closeBtn {
-    visibility: visible;
+    color: #333;
 }
 
 .postit-content {
