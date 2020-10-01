@@ -11,7 +11,7 @@ body, html, #root {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: rgba(200,200,200,0.3);
+  background-image: radial-gradient(farthest-corner at -0% 100%,#0066ff 30%,#10aada 95%);
 }
 
 code {

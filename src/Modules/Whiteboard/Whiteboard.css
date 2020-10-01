@@ -9,6 +9,10 @@
     position: relative;
 }
 
+.whiteboard-wrapper h1 {
+    color: #fff;
+}
+
 .whiteboard-frame {
     width: 100%;
     height: calc(100vh - 200px);
