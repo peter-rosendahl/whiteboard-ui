@@ -8,10 +8,14 @@
     width: 100%;
     height: 30px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     background: rgba(255,255,255,0.1);
     cursor: move;
+}
+
+.postit-header p {
+    margin: 0;
 }
 
 .postit .closeBtn {
@@ -21,12 +25,22 @@
     color: #333;
 }
 
+.postit .expansionBtn {
+    cursor: pointer;
+}
+
 .postit-content {
     display: block;
     margin: 0 0 0 auto;
+    overflow: hidden;
     width: 100%;
     height: 100%;
     padding: 10px;
+}
+
+.postit-content.collapsed {
+    height: 0px;
+    padding: 0 10px;
 }
 
 .postit .context-icon {

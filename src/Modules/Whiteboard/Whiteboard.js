@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import DialogContent from '@material-ui/core/DialogContent';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Postit from './Postit/Postit';
 import NoteAdd from '@material-ui/icons/NoteAdd';
 import SendRounded from '@material-ui/icons/SendRounded';
@@ -70,7 +71,12 @@ class Whiteboard extends Component {
                     </h1>
                     <div className='whiteboard-frame' ref={this.frameRef}>
                         <div className='inner-space' ref={this.wrapper}>
-                            { this.props.postits.map((item) => (
+                            { this.props.isFetchingNotes && 
+                                <div className="board-overlay">
+                                    <CircularProgress size={52} color="default" />
+                                </div>
+                            }
+                            { !this.props.isFetchingNotes && this.props.postits.map((item) => (
                                 <Postit 
                                     onNoteClick={(note) => this.setActiveNote(note, item)}
                                     updateNote={this.props.updateNote}
