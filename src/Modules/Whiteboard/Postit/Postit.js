@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import MoreVert from '@material-ui/icons/MoreVert';
-import Grid from '@material-ui/core/Grid'
-import IconButton from '@material-ui/core/IconButton';
+// import MoreVert from '@material-ui/icons/MoreVert';
+// import Grid from '@material-ui/core/Grid'
+// import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import CloseIcon from '@material-ui/icons/Close';
+import ExpandLessRounded from '@material-ui/icons/ExpandLessRounded';
+import ExpandMoreRounded from '@material-ui/icons/ExpandMoreRounded';
 import Draggable from 'react-draggable';
-import './Postit.css';
+import './Postit.scss';
 
 export default function Postit(props) {
 
     const inputRef = React.createRef();
     const [content, setContent] = useState(props.content);
+    const [isCollapsed, setIsCollapsed] = useState(false);
     const postitStyle = {
         position: 'absolute',
         width: '200px',
@@ -23,7 +26,7 @@ export default function Postit(props) {
     const onDragStart = (e, data) => {}
 
     const onDragStop = (e, data) => {
-        props.onNoteClick(props);
+        // props.onNoteClick(props);
         var newPosition = calculatePosition(data);
         var note = props.note;
         note.posX = parseInt(newPosition.posX);
@@ -57,6 +60,13 @@ export default function Postit(props) {
             posX: newXpct < 100 ? newXpct : 100,
             posY: newYpct < 100 ? newYpct : 100
         }
+        // For Testing purposes
+        // console.log('outerCanvasInPxl', outerCanvasInPxl);
+        // console.log('orgPositionInPct', orgPositionInPct);
+        // console.log('orgPositionInPxl', orgPositionInPxl);
+        // console.log('positionMovementInPxl', positionMovementInPxl);
+        // console.log('newPositionInPxl', newPositionInPxl);
+        // console.log('newPositionInPct', newPositionInPct);
         return newPositionInPct;
     }
 
@@ -70,25 +80,22 @@ export default function Postit(props) {
 
     return (
         <Draggable 
-            handle='.postit-header' 
+            handle='.postit-handle' 
             bounds='parent'
             enableUserSelectHack={false}
             onStart={onDragStart}
             onStop={onDragStop}>
             <div className='postit' style={postitStyle}>
                 <div className='postit-header'>
+                    {isCollapsed && <ExpandMoreRounded className="expansionBtn" onClick={() => setIsCollapsed(false)}></ExpandMoreRounded>}
+                    {!isCollapsed && <ExpandLessRounded className="expansionBtn" onClick={() => setIsCollapsed(true)}></ExpandLessRounded>}
+                    <div className="postit-handle">
+                        {isCollapsed && <p>{content.substring(0,10)}...</p>}
+                    </div>
                     <CloseIcon fontSize="small" className="closeBtn" onClick={() => props.deleteNote(props.id)}></CloseIcon>
                 </div>
-                <Grid
-                    container
-                    direction='row'
-                    justify='flex-end'>
-                    <IconButton className='context-icon' aria-label='see more'>
-                        <MoreVert />
-                    </IconButton>
-                </Grid>
                 
-                <div className='postit-content'>
+                <div className={`postit-content ${isCollapsed ? 'collapsed' : 'expanded'}`}>
                     {/* <p>{this.props.content}</p> */}
                     <TextField 
                         inputRef={inputRef}

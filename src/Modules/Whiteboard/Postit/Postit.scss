@@ -1,0 +1,61 @@
+.postit {
+    display: block;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    position: relative;
+
+    &-header {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.1);
+
+        p {
+            margin: 0;
+        }
+    }
+
+    &-handle {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        cursor: move;
+    }
+
+    &-content {
+        display: block;
+        margin: 0 0 0 auto;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        max-height: 300px;
+        padding: 10px;
+        transition: max-height .3s ease;
+
+        &.collapsed {
+            max-height: 0px;
+            transition: max-height .3s ease;
+            padding: 0 10px;
+        }
+    }
+    
+    .closeBtn {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        color: #333;
+    }
+    .expansionBtn {
+        cursor: pointer;
+    }
+}
+
+.postit .context-icon {
+    display: none;
+}
+
+.postit.active .context-icon {
+    display: block;
+}
