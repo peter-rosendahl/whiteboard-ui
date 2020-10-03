@@ -9,7 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Postit from './Postit/Postit';
 import NoteAdd from '@material-ui/icons/NoteAdd';
 import SendRounded from '@material-ui/icons/SendRounded';
-import './Whiteboard.css';
+import './Whiteboard.scss';
 
 class Whiteboard extends Component {
 
