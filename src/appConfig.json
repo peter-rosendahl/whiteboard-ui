@@ -1,4 +1,5 @@
 {
     "connectionString_dev": "http://localhost:5000/api",
-    "connectionString": "http://whiteboardapi.azurewebsites.net/api"
+    "connectionString": "http://whiteboardapi.azurewebsites.net/api",
+    "connectionString_prmedia": "http://whiteboard.api.prmedia.dk/api"
 }
