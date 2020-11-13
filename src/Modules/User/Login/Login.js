@@ -45,7 +45,7 @@ class Login extends Component {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }
-        fetch(appConfig.connectionString + '/User/version', requestOptions)
+        fetch(appConfig.connectionString + '/DbVersion/Get', requestOptions)
             .then(data => {
                 return data.json();
             })
