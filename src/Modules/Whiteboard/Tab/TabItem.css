@@ -4,6 +4,7 @@
     /* border: 1px solid #ddd; */
     padding: 10px 20px;
     cursor: pointer;
+    min-width: max-content;
 }
 
 .tab-item.active {
