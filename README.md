@@ -8,6 +8,7 @@ NOTE: This project is in the making, so more features will come along as they ar
 ## [0.1.4] 2020/11/13
 ### Fixes
 - Added horizontal scrolling on bottom tabs.
+- Stores note collapsible state to DB.
 
 ### Uncategorized
 - Added API version request to login page, kickstarting the API beforehand.

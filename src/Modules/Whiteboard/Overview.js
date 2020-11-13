@@ -150,7 +150,7 @@ class Overview extends Component {
                 <Menu history={this.props.history}></Menu>
                 { this.state.isFetchingBoards && 
                     <div className="loading-overlay">
-                        <CircularProgress size={52} color="default" />
+                        <CircularProgress size={52} color="inherit" />
                     </div>
                 }
                 { this.state.whiteboards.length > 0 
