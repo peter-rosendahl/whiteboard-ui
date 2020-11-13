@@ -17,6 +17,7 @@ class Login extends Component {
 
     constructor(props) {
         super(props);
+        this.getApiVersion = this.getApiVersion.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.onRegisterClick = this.onRegisterClick.bind(this);
         this.onInputChange = this.onInputChange.bind(this);
@@ -27,9 +28,37 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
+            apiVersion: '',
             loading: false,
+            apiLoading: false,
             openModal: false
         }
+    }
+
+    componentDidMount() {
+        this.getApiVersion();
+    }
+
+    getApiVersion = () => {
+        this.setState({apiLoading: true});
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }
+        fetch(appConfig.connectionString + '/User/version', requestOptions)
+            .then(data => {
+                return data.json();
+            })
+            .then(response => {
+                console.log('api version result', response);
+                setTimeout(() => {
+
+                    this.setState({
+                        apiLoading: false,
+                        apiVersion: response.version
+                    });
+                }, 1000);
+            });
     }
 
     onFormSubmit = event => {
@@ -119,6 +148,10 @@ class Login extends Component {
                                     </Grid>
                                 {/* </Form.Row> */}
                             </Form>
+                            <div className="api-version">
+                                {this.state.apiLoading && <p><CircularProgress size={12} color="inherit" /> API loading...</p>}
+                                {!this.state.apiLoading && <p>API v.{this.state.apiVersion} ready</p>}
+                            </div>
                         </CardContent>
                     </Card>
                     {this.state.openModal && 

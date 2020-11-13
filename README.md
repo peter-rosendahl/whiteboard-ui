@@ -9,6 +9,9 @@ NOTE: This project is in the making, so more features will come along as they ar
 ### Fixes
 - Added horizontal scrolling on bottom tabs.
 
+### Uncategorized
+- Added API version request to login page, kickstarting the API beforehand.
+
 ## [0.1.3] 2020/10/30
 ### Uncategorized
 - Added prmedia/api path to appConfig

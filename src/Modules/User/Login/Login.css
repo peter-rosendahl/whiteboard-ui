@@ -1,3 +1,11 @@
 .login-wrapper {
     margin: auto;
 }
+
+.login-wrapper .api-version p {
+    color: #666;
+    font-size: small;
+    font-style: italic;
+    text-align: center;
+    margin: 15px auto 0;
+}
