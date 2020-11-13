@@ -13,7 +13,7 @@ export default function Postit(props) {
 
     const inputRef = React.createRef();
     const [content, setContent] = useState(props.content);
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(props.note.isCollapsed);
     const postitStyle = {
         position: 'absolute',
         width: '200px',
@@ -78,6 +78,13 @@ export default function Postit(props) {
         return ((objectRef / canvasRef) * 100);
     }
 
+    const toggleCollapse = () => {
+        setIsCollapsed(!isCollapsed);
+        var newNote = props.note;
+        newNote.isCollapsed = !isCollapsed;
+        props.updateNote(newNote);
+    }
+
     return (
         <Draggable 
             handle='.postit-handle' 
@@ -87,8 +94,8 @@ export default function Postit(props) {
             onStop={onDragStop}>
             <div className='postit' style={postitStyle}>
                 <div className='postit-header'>
-                    {isCollapsed && <ExpandMoreRounded className="expansionBtn" onClick={() => setIsCollapsed(false)}></ExpandMoreRounded>}
-                    {!isCollapsed && <ExpandLessRounded className="expansionBtn" onClick={() => setIsCollapsed(true)}></ExpandLessRounded>}
+                    {isCollapsed && <ExpandMoreRounded className="expansionBtn" onClick={() => toggleCollapse()}></ExpandMoreRounded>}
+                    {!isCollapsed && <ExpandLessRounded className="expansionBtn" onClick={() => toggleCollapse()}></ExpandLessRounded>}
                     <div className="postit-handle">
                         {isCollapsed && <p>{content.substring(0,10)}...</p>}
                     </div>
