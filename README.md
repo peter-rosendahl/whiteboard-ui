@@ -8,7 +8,7 @@ NOTE: This project is in the making, so more features will come along as they ar
 ## [0.1.5] 2020/11/23
 ### Fixes
 - Fixed warnings and errors from console.
-- Fixed issue #6 by updating state manually instead of refetching data.
+- Fixed issue #9 by updating state manually instead of refetching data.
 
 
 ## [0.1.4] 2020/11/13
