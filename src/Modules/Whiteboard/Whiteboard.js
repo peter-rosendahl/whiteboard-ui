@@ -73,7 +73,7 @@ class Whiteboard extends Component {
                         <div className='inner-space' ref={this.wrapper}>
                             { this.props.isFetchingNotes && 
                                 <div className="board-overlay">
-                                    <CircularProgress size={52} color="default" />
+                                    <CircularProgress size={52} color="inherit" />
                                 </div>
                             }
                             { !this.props.isFetchingNotes && this.props.postits.map((item) => (
