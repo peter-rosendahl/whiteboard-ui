@@ -5,6 +5,12 @@ NOTE: This project is in the making, so more features will come along as they ar
 
 # Changelog
 
+## [0.1.5] 2020/11/23
+### Fixes
+- Fixed warnings and errors from console.
+- Fixed issue #9 by updating state manually instead of refetching data.
+
+
 ## [0.1.4] 2020/11/13
 ### Fixes
 - Added horizontal scrolling on bottom tabs.

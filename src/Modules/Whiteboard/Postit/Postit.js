@@ -11,6 +11,7 @@ import './Postit.scss';
 
 export default function Postit(props) {
 
+    const draggableRef = React.useRef(null);
     const inputRef = React.createRef();
     const [content, setContent] = useState(props.content);
     const [isCollapsed, setIsCollapsed] = useState(props.note.isCollapsed);
@@ -23,12 +24,15 @@ export default function Postit(props) {
         background: props.colorCode
     }
 
-    const onDragStart = (e, data) => {}
+    const onDragStart = (e, data) => {
+        // draggableRef.current.
+    }
 
     const onDragStop = (e, data) => {
+        console.log('data onDragStop', e, data);
         // props.onNoteClick(props);
         var newPosition = calculatePosition(data);
-        var note = props.note;
+        var note = {...props.note};
         note.posX = parseInt(newPosition.posX);
         note.posY = parseInt(newPosition.posY);
         props.updateNote(note);
@@ -89,10 +93,11 @@ export default function Postit(props) {
         <Draggable 
             handle='.postit-handle' 
             bounds='parent'
+            nodeRef={draggableRef}
             enableUserSelectHack={false}
             onStart={onDragStart}
             onStop={onDragStop}>
-            <div className='postit' style={postitStyle}>
+            <div ref={draggableRef} className='postit' style={postitStyle}>
                 <div className='postit-header'>
                     {isCollapsed && <ExpandMoreRounded className="expansionBtn" onClick={() => toggleCollapse()}></ExpandMoreRounded>}
                     {!isCollapsed && <ExpandLessRounded className="expansionBtn" onClick={() => toggleCollapse()}></ExpandLessRounded>}

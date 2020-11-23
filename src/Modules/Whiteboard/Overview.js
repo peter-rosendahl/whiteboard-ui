@@ -36,7 +36,6 @@ class Overview extends Component {
     componentDidMount = function () {
         var token = JSON.parse(sessionStorage.getItem('WHITEBOARD_TOKEN'));
         if ( token !== null) {
-            console.log('token', token);
             Member.setToken(token);
             this.getWhiteboards(true);
         } else {
@@ -54,9 +53,14 @@ class Overview extends Component {
 
     createPostit() {
         fetch(appConfig.connectionString + "/Postit/Insert?boardId=" + this.state.active.id, this.getRequestOptions('POST'))
-            .then(responseValue => responseValue.json)
+            .then(responseValue => responseValue.json())
             .then(response => {
-                this.getPostits(this.state.active.id);
+                const updatedNotes = this.state.postits;
+                updatedNotes.push(response);
+                this.setState({
+                    postits: updatedNotes
+                })
+                // this.getPostits(this.state.active.id);
             })
     }
 
@@ -91,7 +95,17 @@ class Overview extends Component {
     deleteNote = noteId => {
         fetch(appConfig.connectionString + "/Postit/Delete?userId=" + this.state.userId + "&postitId=" + noteId, this.getRequestOptions('DELETE'))
             .then(response => {
-                this.getWhiteboards();
+                // this.getWhiteboards();
+                // this.getPostits(this.state.active.id);
+                const updatedNotes = this.state.postits;
+                const deletedNote = updatedNotes.find(x => x.id === noteId);
+                const itemIndex = updatedNotes.indexOf(deletedNote);
+                if (itemIndex > -1) {
+                    updatedNotes.splice(itemIndex, 1);
+                }
+                this.setState({
+                    postits: updatedNotes
+                })
             })
     }
 

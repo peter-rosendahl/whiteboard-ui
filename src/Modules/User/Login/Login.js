@@ -142,14 +142,14 @@ class Login extends Component {
                                     <Grid container direction='row' justify='space-between'>
                                         <Button type='button' className='' onClick={this.onRegisterClick}>Register</Button>
                                         <Button disabled={!(this.state.username.length !== 0 && this.state.password.length !== 0)} type='submit' variant='contained' color='primary' className=''>
-                                            {this.state.loading && <CircularProgress size={24} color="white" />}
+                                            {this.state.loading && <CircularProgress size={24} color="inherit" />}
                                             {this.state.loading === false && <React.Fragment>Login</React.Fragment>}
                                         </Button>
                                     </Grid>
                                 {/* </Form.Row> */}
                             </Form>
                             <div className="api-version">
-                                {this.state.apiLoading && <p><CircularProgress size={12} color="inherit" /> API loading...</p>}
+                                {this.state.apiLoading && <div><CircularProgress size={12} color="inherit" /> API loading...</div>}
                                 {!this.state.apiLoading && <p>API v.{this.state.apiVersion} ready</p>}
                             </div>
                         </CardContent>
